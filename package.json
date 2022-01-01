@@ -19,7 +19,6 @@
     "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.2.2",
-    "mongoose": "^6.1.4",
     "morgan": "^1.10.0",
     "ncrypt": "^1.0.7",
     "nodemon": "^2.0.15",
