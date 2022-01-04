@@ -45,7 +45,7 @@ async function crearPlanta(datos){
 async function actualizarPlanta(id, datos){
     let resultado = {};
     if (id && id.length == 24){
-        if (datos && datos.length > 0){
+        if (datos && Object.keys(datos).length > 0){
             if (datos.title && datos.title !== ""){
                 let resConsulta = await modeloPlantas.actualizarUna(id, datos); 
                     if (resConsulta && resConsulta.acknowledged){
@@ -59,7 +59,7 @@ async function actualizarPlanta(id, datos){
             } 
             else {
                 resultado.mensaje = "Titulo vacio";
-                resultado.datos = title;
+                resultado.datos = datos.title ? datos.title :"" ;
             }
             
         } 
@@ -82,3 +82,4 @@ module.exports.obtenerPlantas = obtenerPlantas;
 module.exports.obtenerPlanta = obtenerPlanta;
 module.exports.obtenerPlantaPorNombre = obtenerPlantaPorNombre;
 module.exports.crearPlanta = crearPlanta;
+module.exports.actualizarPlanta = actualizarPlanta  ;

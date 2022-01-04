@@ -56,9 +56,27 @@ function crearUna(datos){
     })
 };
 
+function actualizarUna(id, datos){
+    let db =  basedatos.obtenerConexion();
+     return db.collection("PlantasMexico").updateOne(
+            {"_id": objectId(id)},
+            {"$set": datos}
+     )       
+    .then(function (resultado){
+        console.log(resultado);
+        return resultado; 
+    })
+    .catch(function (error){
+        console.log(error);
+    })
+};
+
+
+
     
 
     module.exports.findAll = findAll;
-    module.exports.obtenerUna= obtenerUna;        
-    module.exports.obtenerPorNombre= obtenerPorNombre; 
-    module.exports.crearUna= crearUna; 
+    module.exports.obtenerUna = obtenerUna;        
+    module.exports.obtenerPorNombre = obtenerPorNombre; 
+    module.exports.crearUna = crearUna; 
+    module.exports.actualizarUna = actualizarUna;
