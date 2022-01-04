@@ -32,4 +32,22 @@ controladorFlorescencia.get("/obtenerPlantasPorNombre/:nombre", async function(r
             "data": plantas
         });
 });
+
+controladorFlorescencia.post("/crearPlanta", async function(req, res){
+    let datos = req.body;
+    let planta = await servicioPlantas.crearPlanta(datos);
+    res.send({
+        "mensaje ": planta.datos,
+        "Resultado": planta.mensaje
+    });
+});
+
+controladorFlorescencia.put("/actualizarPlanta/:id", async function(req, res){
+    let id = req.params.id;
+    let datos = req.body;
+    let resultado = await servicioPlantas.actualizarPlanta(id,datos);
+    res.send(resultado);
+});
+
+
 module.exports = controladorFlorescencia;

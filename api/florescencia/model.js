@@ -34,7 +34,7 @@ const objectId = require('mongodb').ObjectId;
             })
     };    
 
-    function obtenerPorNombre(nombre){
+function obtenerPorNombre(nombre){
         let db =  basedatos.obtenerConexion();
          return db.collection("PlantasMexico").find({"title" : new RegExp(nombre, "i")}).toArray()
         .then(function (plantas){
@@ -45,8 +45,20 @@ const objectId = require('mongodb').ObjectId;
         })
 };
 
+function crearUna(datos){
+    let db =  basedatos.obtenerConexion();
+     return db.collection("PlantasMexico").insertOne(datos)
+    .then(function (resConsulta){
+        return resConsulta; 
+    })
+    .catch(function (error){
+        console.log(error);
+    })
+};
+
     
 
     module.exports.findAll = findAll;
     module.exports.obtenerUna= obtenerUna;        
     module.exports.obtenerPorNombre= obtenerPorNombre; 
+    module.exports.crearUna= crearUna; 
