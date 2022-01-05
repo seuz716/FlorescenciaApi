@@ -71,6 +71,21 @@ function actualizarUna(id, datos){
     })
 };
 
+function eliminarUna(id){
+    let db =  basedatos.obtenerConexion();
+     return db.collection("PlantasMexico").deleteOne(
+            {"_id": objectId(id)},
+           
+     )       
+    .then(function (resultado){
+        console.log(resultado);
+        return resultado; 
+    })
+    .catch(function (error){
+        console.log(error);
+    })
+};
+
 
 
     
@@ -80,3 +95,4 @@ function actualizarUna(id, datos){
     module.exports.obtenerPorNombre = obtenerPorNombre; 
     module.exports.crearUna = crearUna; 
     module.exports.actualizarUna = actualizarUna;
+    module.exports.eliminarUna = eliminarUna;

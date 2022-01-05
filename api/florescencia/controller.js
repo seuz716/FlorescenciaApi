@@ -49,5 +49,10 @@ controladorFlorescencia.put("/actualizarPlanta/:id", async function(req, res){
     res.send(resultado);
 });
 
+controladorFlorescencia.delete("/eliminarPlanta/:id", async function(req, res){
+    let id = req.params.id;
+    let resultado = await servicioPlantas.eliminarPlanta(id);
+    res.send(resultado);
+});
 
 module.exports = controladorFlorescencia;

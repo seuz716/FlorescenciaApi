@@ -61,14 +61,12 @@ async function actualizarPlanta(id, datos){
                 resultado.mensaje = "Titulo vacio";
                 resultado.datos = datos.title ? datos.title :"" ;
             }
-            
         } 
         else {
                 resultado.mensaje = "No hay datos";
                 resultado.datos = datos;
         }
-        
-    } 
+   } 
     else {
         resultado.mensaje = "ID invalido";
         resultado.datos = id;
@@ -76,10 +74,32 @@ async function actualizarPlanta(id, datos){
     return resultado;
 };
 
+async function eliminarPlanta(id){
+    let resultado = {};
+    if (id && id.length == 24 && /^[0-9A-F]+$/i.test(id)){
+        let resultadoEliminar = await modeloPlantas.eliminarUna(id); 
+                if        (resultadoEliminar  && resultadoEliminar.acknowledged){
+                          resultado.mensaje = "Planta eliminada correctamente";
+                          resultado.datos = resultadoEliminar;
+                    } 
+                else {
+                          resultado.mensaje = "Error al eliminar";
+                          resultado.datos = id;  
+                    }               
+             } 
+                else {
+                          resultado.mensaje = "ID invalido";
+                          resultado.datos = id;
+                     }
+     return resultado;
+};
+
+
 
 
 module.exports.obtenerPlantas = obtenerPlantas;
 module.exports.obtenerPlanta = obtenerPlanta;
 module.exports.obtenerPlantaPorNombre = obtenerPlantaPorNombre;
 module.exports.crearPlanta = crearPlanta;
-module.exports.actualizarPlanta = actualizarPlanta  ;
+module.exports.actualizarPlanta = actualizarPlanta;
+module.exports.eliminarPlanta = eliminarPlanta;
