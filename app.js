@@ -18,7 +18,8 @@ app.use(morgan(process.env.MORGAN_MODE));
 
 /*Iniciar las rutas*/
 
-app.use("/api/florescencia", controladorFlorescencia);
+app.use("./api/florescencia", controladorFlorescencia);
+app.use("/api/usuarios", controladorUsuarios);
 
 
 /* Configurar puerto que va  monitorear la api*/
@@ -27,7 +28,6 @@ conexion.conectar()
     .then(function() {
         app.listen(port, function () {
             console.log("API ejecutandose exitosamente en el puerto: " + port); 
-            console.log(conexion.obtenerConexion()); 
     });
    
    })

@@ -3,7 +3,10 @@ const controladorUsuarios = express.Router();
 const servicioUsuarios = require('./services');
 
 
-/* User
+
+
+
+/* datosUsuario
 {
     "nombre": xxxxxx,
     "usuario": xxxxx,
@@ -11,24 +14,20 @@ const servicioUsuarios = require('./services');
     "rol":["A","B",..."n"]
 } 
 */
-
-
-controladorUsuarios.get("iniciarSesion", function (req, res){
-    res.send("Los datos del usuario son:" + datos.usuario);
-    
+controladorUsuarios.get("/iniciarSesion", async function(req, res){
+    let datosUsuario = req.body;
+    let resultado = await servicioUsuarios.iniciarSesion(datosUsuario);
+    res.send(resultado);
 });
+
+
 
 controladorUsuarios.post("/crearUsuario", async function(req, res){
     let datosUsuario = req.body;
-    let usuario = await servicioUsuarios.crearUsuario(datosUsuario);
-    res.send({
-        Resultado,
-        "mensaje ": usuario.datosUsuario,
-        "Resultado": usuario.mensaje
-    });
+    let resultado = await servicioUsuarios.crearUser(datosUsuario);
+    res.send(resultado);
 });
 
-
-
+module.exports = controladorUsuarios;
 
 
