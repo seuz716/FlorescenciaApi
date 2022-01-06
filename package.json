@@ -4,7 +4,8 @@
   "description": " vivero en linea",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "author": "cesar Andres Abadia",
   "license": "ISC",
@@ -18,11 +19,19 @@
     "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.2.2",
-    "mongoose": "^6.1.4",
     "morgan": "^1.10.0",
     "ncrypt": "^1.0.7",
     "nodemon": "^2.0.15",
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.3.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seuz716/florescencia.git"
+  },
+  "bugs": {
+    "url": "https://github.com/seuz716/florescencia/issues"
+  },
+  "homepage": "https://github.com/seuz716/florescencia#readme"
 }
